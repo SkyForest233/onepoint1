@@ -1,0 +1,13 @@
+.github/
+.idea/
+dist/
+markdown/
+node_modules/
+tmp/
+worker/
+
+lib/deprecated/
+
+package.json
+
+lib/views/

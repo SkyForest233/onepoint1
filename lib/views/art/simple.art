@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="{{ $V.site.logo }}">
+    <title>{{ $V.site.name }}</title>
+</head>
+
+<body>
+<div class="content">
+    <div>
+        {{ set navs=$V.navs}}
+        {{ each navs}}
+        {{ if $index===0 }}
+        <span><a href="{{@ $value.href }}">Home</a></span>
+        {{else}}
+        <span>/</span>
+        <span><a href="{{@ $value.href }}">{{ $value.name }}</a></span>
+        {{ /if }}
+        {{ /each }}
+    </div>
+    {{ if response.isList}}
+    {{ each $V.list }}
+    <div>
+        <a href="{{@ $V.previewHref($value,false) }}">{{ $value.name }}</a>
+    </div>
+    {{ /each }}
+    {{ if $V.hasNext }}
+    <div>
+        <a href="{{@ $V.nextHref }}">Next...</a>
+    </div>
+    {{ /if }}
+    {{ else }}
+    <div>
+        <pre><code>{{ $V.jsonData }}</code></pre>
+    </div>
+    {{ /if }}
+</div>
+</body>
+
+</html>
